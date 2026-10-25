@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Road Hazard — FixMyRoad</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/citizen.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#1e3a8a"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+      FixMyRoad
+    </a>
+    <div class="nav-links">
+      <a href="citizen.html" class="nav-link">Back to Map</a>
+    </div>
+  </nav>
+
+  <main class="report-container">
+    <div class="report-card">
+      <div class="report-header">
+        <h1>Report a Pothole / Road Hazard</h1>
+        <p style="color:#64748b; font-size:0.9rem;">No account required. Submit hazard details directly to public monitoring.</p>
+      </div>
+
+      <form id="pothole-report-form">
+        <div class="form-group">
+          <label class="form-label">1. Incident Location</label>
+          <div class="location-box">
+            <button type="button" id="btn-get-location" class="btn btn-primary" style="margin-bottom:0.5rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              Use My Current Location (GPS)
+            </button>
+            <div style="font-size:0.85rem; color:#64748b;">Or drag the marker / click on the map to pin exact spot:</div>
+            
+            <div id="picker-map" class="mini-map-picker"></div>
+            
+            <input type="hidden" id="latitude">
+            <input type="hidden" id="longitude">
+            <div class="coords-display" id="coords-text">Lat: --, Long: --</div>
+          </div>
+        </div>
+
+        <div id="duplicate-alert-box" style="display:none; background:#fef3c7; border-left:4px solid #f59e0b; padding:0.75rem 1rem; border-radius:6px; margin-bottom:1.5rem; color:#92400e;">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="road-name">Road / Landmark Name</label>
+          <input type="text" id="road-name" class="form-control" placeholder="e.g. 100ft Ring Road near Sony World Signal" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">2. Estimated Severity</label>
+          <div class="severity-options">
+            <div class="severity-card" data-severity="Low">
+              <div class="severity-title" style="color:#0284c7;">Low</div>
+              <div style="font-size:0.75rem; color:#64748b;">Surface wear</div>
+            </div>
+            <div class="severity-card selected medium" data-severity="Medium">
+              <div class="severity-title" style="color:#d97706;">Medium</div>
+              <div style="font-size:0.75rem; color:#64748b;">Bumpy / Skids</div>
+            </div>
+            <div class="severity-card" data-severity="High">
+              <div class="severity-title" style="color:#ea580c;">High</div>
+              <div style="font-size:0.75rem; color:#64748b;">Deep pothole</div>
+            </div>
+            <div class="severity-card" data-severity="Critical">
+              <div class="severity-title" style="color:#dc2626;">Critical</div>
+              <div style="font-size:0.75rem; color:#64748b;">Major hazard</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="photo-upload">3. Upload Photo Evidence (Optional)</label>
+          <input type="file" id="photo-upload" class="form-control" accept="image/*">
+          
+          <div id="preview-wrapper" class="image-preview-wrapper" style="display:none;">
+            <img id="image-preview" class="image-preview" alt="Pothole Preview">
+          </div>
+
+          <div id="ai-recommendation" class="ai-recommendation-box" style="display:none;">
+            <span>🤖 AI is analyzing image...</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="description">4. Additional Details</label>
+          <textarea id="description" class="form-control" rows="3" placeholder="Describe the hazard (e.g., water logging, sharp edges, risk to bikes)..."></textarea>
+        </div>
+
+        <button type="submit" id="btn-submit-report" class="btn btn-primary btn-block btn-lg">
+          Submit Pothole Report
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <div id="confirmation-modal" class="modal-overlay">
+    <div class="modal-content" style="text-align:center;">
+      <div style="font-size:3rem; margin-bottom:0.5rem;">🎉</div>
+      <h2 style="color:#1e3a8a; margin-bottom:0.5rem;">Report Successfully Filed!</h2>
+      <p style="color:#475569; margin-bottom:1.25rem;">Your report has been logged and published to the public monitoring dashboard.</p>
+      
+      <div style="background:#f1f5f9; padding:1rem; border-radius:8px; margin-bottom:1.5rem; text-align:left;">
+        <div><strong>Tracking ID:</strong> <span id="modal-report-id" style="font-family:monospace; color:#1e3a8a; font-weight:700;">--</span></div>
+        <div><strong>Location:</strong> <span id="modal-report-road">--</span></div>
+        <div><strong>Status:</strong> <span class="badge badge-pending">Pending Municipal Action</span></div>
+      </div>
+
+      <div style="display:flex; gap:1rem;">
+        <a href="citizen.html" class="btn btn-primary btn-block">View on Live Map</a>
+        <a href="report.html" class="btn btn-secondary btn-block" onclick="location.reload()">File Another</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/report.js"></script>
+</body>
+</html>

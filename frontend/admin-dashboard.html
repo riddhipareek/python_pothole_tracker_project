@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — FixMyRoad</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#1e3a8a"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+      FixMyRoad <span class="brand-badge" style="background:#0f766e;">Admin Portal</span>
+    </a>
+    <div class="nav-links">
+      <span style="font-size:0.85rem; font-weight:600; color:#475569;">👤 Chief Municipal Inspector</span>
+      <button id="btn-seed" class="btn btn-secondary" style="font-size:0.8rem; padding:0.35rem 0.75rem;" onclick="resetDemoSeed()">🔄 Reset Demo Data</button>
+      <button id="btn-logout" class="btn btn-danger" style="font-size:0.8rem; padding:0.35rem 0.75rem;">Logout</button>
+    </div>
+  </nav>
+
+  <main class="admin-layout">
+    <div class="dashboard-header">
+      <div class="dashboard-title">
+        <h1>Road Hazard Governance & SLA Dashboard</h1>
+        <p>Real-time road monitoring, SLA breach alerts, and rectification tracking.</p>
+      </div>
+      <a href="citizen.html" target="_blank" class="btn btn-secondary">
+        🌐 Open Public Citizen View
+      </a>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-header"><span class="kpi-title">Total Reports</span><span>📋</span></div>
+        <div class="kpi-value" id="kpi-total">--</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header"><span class="kpi-title">Pending Action</span><span>⏳</span></div>
+        <div class="kpi-value" id="kpi-pending" style="color:#d97706;">--</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header"><span class="kpi-title">Critical Hazards</span><span>⚠️</span></div>
+        <div class="kpi-value" id="kpi-critical" style="color:#dc2626;">--</div>
+      </div>
+
+      <div class="kpi-card overdue-alert">
+        <div class="kpi-header"><span class="kpi-title" style="color:#991b1b;">🚨 90+ Days Unresolved</span><span>🔥</span></div>
+        <div class="kpi-value" id="kpi-overdue">--</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-header"><span class="kpi-title">Rectified</span><span>✅</span></div>
+        <div class="kpi-value" id="kpi-rectified" style="color:#16a34a;">--</div>
+      </div>
+    </div>
+
+    <section class="admin-map-wrapper">
+      <h3 style="margin-bottom:0.75rem; font-size:1.1rem; color:#1e293b;">Geographic Hazard Distribution</h3>
+      <div id="admin-map"></div>
+    </section>
+
+    <div class="table-controls">
+      <input type="text" id="admin-search" class="form-control search-input" placeholder="Search by ID, road or keyword...">
+      
+      <div class="filter-pills">
+        <button class="filter-btn active" id="filter-btn-all" onclick="applyAdminFilters('all')">All</button>
+        <button class="filter-btn" id="filter-btn-pending" onclick="applyAdminFilters('pending')">Pending</button>
+        <button class="filter-btn" id="filter-btn-critical" onclick="applyAdminFilters('critical')">Critical</button>
+        <button class="filter-btn" id="filter-btn-overdue" style="color:#b91c1c; font-weight:700;" onclick="applyAdminFilters('overdue')">🚨 90+ Days SLA</button>
+        <button class="filter-btn" id="filter-btn-rectified" onclick="applyAdminFilters('rectified')">Rectified</button>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Report ID</th>
+            <th>Date</th>
+            <th>Severity</th>
+            <th>Hazard Location</th>
+            <th>Status</th>
+            <th>Age / SLA</th>
+            <th>Photo</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="reports-table-body">
+          <tr><td colspan="8" style="text-align:center; padding:2rem;">Loading reported hazards...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <div id="rectify-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close modal-cancel">&times;</button>
+      <h2 style="color:#15803d; margin-bottom:0.5rem;">Mark Hazard as Rectified</h2>
+      <p style="color:#475569; font-size:0.9rem; margin-bottom:1.25rem;">
+        Confirm that municipal road maintenance has been completed. This will update public records and reflect immediately on the citizen map.
+      </p>
+
+      <input type="hidden" id="rectify-report-id">
+
+      <div class="form-group">
+        <label class="form-label" for="rectify-remarks">Resolution Remarks / Notes</label>
+        <textarea id="rectify-remarks" class="form-control" rows="3" placeholder="e.g., Bitumen overlay applied and rolled level by Ward 12 Highway unit."></textarea>
+      </div>
+
+      <div style="display:flex; gap:1rem; justify-content:flex-end;">
+        <button class="btn btn-secondary modal-cancel">Cancel</button>
+        <button class="btn btn-success" onclick="confirmRectification()">Confirm & Mark Rectified</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="details-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close modal-cancel">&times;</button>
+      <div id="details-modal-content"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

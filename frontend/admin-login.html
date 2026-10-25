@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — FixMyRoad Municipal Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#1e3a8a"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+      FixMyRoad
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Citizen Home</a>
+    </div>
+  </nav>
+
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>Municipal Officer Login</h1>
+        <p style="color:#64748b; font-size:0.9rem; margin-top:0.25rem;">Authenticate to manage road hazard rectification workflows.</p>
+      </div>
+
+      <div id="login-error" style="display:none; background:#fee2e2; border-left:4px solid #dc2626; color:#991b1b; padding:0.75rem; border-radius:4px; font-size:0.85rem; margin-bottom:1.25rem; font-weight:600;"></div>
+
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label class="form-label" for="admin-userid">Official User ID / Email</label>
+          <input type="text" id="admin-userid" class="form-control" value="admin@fixmyroad.gov.in" placeholder="admin@fixmyroad.gov.in" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="admin-password">Password</label>
+          <input type="password" id="admin-password" class="form-control" value="Admin@12345" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" id="btn-login" class="btn btn-primary btn-block btn-lg" style="margin-top:1rem;">
+          Sign In to Dashboard
+        </button>
+      </form>
+
+      <div class="login-helper-box">
+        <strong>💡 Hackathon Demo Credentials:</strong><br>
+        User ID: <code>admin@fixmyroad.gov.in</code> (or <code>admin</code>)<br>
+        Password: <code>Admin@12345</code>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

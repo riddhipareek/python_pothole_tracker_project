@@ -1,0 +1,129 @@
+[
+  {
+    "reportId": "FMR-2026-CRIT-910",
+    "title": "Massive Crater near Metro Pillar 142",
+    "description": "Deep road rupture causing severe skids for two-wheelers during rain. Water accumulating rapidly.",
+    "location": {
+      "latitude": 12.971598,
+      "longitude": 77.594562,
+      "roadName": "MG Road, Near Trinity Circle",
+      "city": "Bengaluru",
+      "pincode": "560001"
+    },
+    "severity": "Critical",
+    "photoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh_84tqDU8N_LquW0sm3PAP67AfR209Hb8KJSY1iHjpQ&s=10",
+    "status": "Pending",
+    "reportedBy": "Citizen #8412",
+    "createdAt": "2026-05-10T08:30:00.000Z",
+    "updatedAt": "2026-05-10T08:30:00.000Z",
+    "rectifiedAt": null,
+    "rectifiedBy": null,
+    "adminRemarks": "Escalated to Ward 112 Engineering Dept"
+  },
+  {
+    "reportId": "FMR-2026-OVERDUE-088",
+    "title": "Severe asphalt caving at junction",
+    "description": "Unattended pothole growing wider for months. Outer ring road junction bottleneck.",
+    "location": {
+      "latitude": 12.935192,
+      "longitude": 77.624481,
+      "roadName": "100 Feet Road, 4th Block Koramangala",
+      "city": "Bengaluru",
+      "pincode": "560034"
+    },
+    "severity": "High",
+    "photoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzjV7Ll9Mzk7tpDdoNO5HEkAs7RpBZ49NyECbj52nEMsOasTre5yrwdbc&s=10",
+    "status": "Pending",
+    "reportedBy": "Citizen #1903",
+    "createdAt": "2026-05-20T11:15:00.000Z",
+    "updatedAt": "2026-05-20T11:15:00.000Z",
+    "rectifiedAt": null,
+    "rectifiedBy": null,
+    "adminRemarks": ""
+  },
+  {
+    "reportId": "FMR-2026-MED-412",
+    "title": "Multiple road surface cracks & potholes",
+    "description": "Cluster of small to medium potholes developing right after flyover descent.",
+    "location": {
+      "latitude": 12.927923,
+      "longitude": 77.627108,
+      "roadName": "Sarjapur Main Road, Near Jakkasandra",
+      "city": "Bengaluru",
+      "pincode": "560034"
+    },
+    "severity": "Medium",
+    "photoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgMOH9B6tDxxB2COpe0EMqysjWVWFILGVHOVebxvwMNSDR7-haSMKyHCM&s=10",
+    "status": "Pending",
+    "reportedBy": "Citizen #6271",
+    "createdAt": "2026-08-15T14:20:00.000Z",
+    "updatedAt": "2026-08-15T14:20:00.000Z",
+    "rectifiedAt": null,
+    "rectifiedBy": null,
+    "adminRemarks": ""
+  },
+  {
+    "reportId": "FMR-2026-LOW-104",
+    "title": "Minor edge erosion along footpath",
+    "description": "Tar peeling away near curb, manageable at low speeds but needs patching.",
+    "location": {
+      "latitude": 12.981240,
+      "longitude": 77.640192,
+      "roadName": "Indiranagar 100 Feet Road, 12th Main",
+      "city": "Bengaluru",
+      "pincode": "560038"
+    },
+    "severity": "Low",
+    "photoUrl": "https://ichef.bbci.co.uk/ace/standard/2048/cpsprodpb/9f16/live/d0f412a0-e492-11f0-a06d-4903df3f724c.jpg",
+    "status": "Pending",
+    "reportedBy": "Citizen #3120",
+    "createdAt": "2026-08-25T09:45:00.000Z",
+    "updatedAt": "2026-08-25T09:45:00.000Z",
+    "rectifiedAt": null,
+    "rectifiedBy": null,
+    "adminRemarks": ""
+  },
+  {
+    "reportId": "FMR-2026-PROG-519",
+    "title": "Dangerous manhole depression & pothole",
+    "description": "Sunken manhole surrounded by fractured bitumen. Barricade placed temporarily.",
+    "location": {
+      "latitude": 12.959172,
+      "longitude": 77.697419,
+      "roadName": "HAL Old Airport Road, Murugeshpalya",
+      "city": "Bengaluru",
+      "pincode": "560017"
+    },
+    "severity": "Critical",
+    "photoUrl": "https://m.economictimes.com/thumb/msid-126068915,width-1200,height-1200,resizemode-4,imgsize-598702/pothole-ridden-road.jpg",
+    "status": "In Progress",
+    "reportedBy": "Citizen #7741",
+    "createdAt": "2026-07-28T16:10:00.000Z",
+    "updatedAt": "2026-08-28T10:00:00.000Z",
+    "rectifiedAt": null,
+    "rectifiedBy": null,
+    "adminRemarks": "Road repair crew assigned with cold mix asphalt."
+  },
+  {
+    "reportId": "FMR-2026-RECT-001",
+    "title": "Repaired pothole near Bus Terminal",
+    "description": "Deep trench fixed with hot bitumen overlay and rolled level.",
+    "location": {
+      "latitude": 12.978369,
+      "longitude": 77.572426,
+      "roadName": "Subhash Nagar, Majestic Bus Stand Exit",
+      "city": "Bengaluru",
+      "pincode": "560009"
+    },
+    "severity": "High",
+    "photoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTyD-ptJ86jaT4XivSomwjXzFtOucQfdxt9d6i_Ee_-ZTmnBRD58NLlBYO&s=10",
+    "status": "Rectified",
+    "reportedBy": "Citizen #4419",
+    "createdAt": "2026-06-01T10:00:00.000Z",
+    "updatedAt": "2026-08-20T17:30:00.000Z",
+    "rectifiedAt": "2026-08-20T17:30:00.000Z",
+    "rectifiedBy": "admin@fixmyroad.gov.in",
+    "adminRemarks": "Re-tarred and leveled by Zone 4 Highway Division. Fix confirmed."
+  }
+]
+

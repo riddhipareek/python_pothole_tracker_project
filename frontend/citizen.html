@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Road Hazard Map — FixMyRoad</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/citizen.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#1e3a8a"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+      FixMyRoad
+    </a>
+    <div class="nav-links">
+      <a href="citizen.html" class="nav-link active">Public Map</a>
+      <a href="report.html" class="btn btn-primary" style="padding:0.4rem 0.9rem; font-size:0.85rem;">+ Report Hazard</a>
+      <a href="admin-login.html" class="nav-link">Officer Login</a>
+    </div>
+  </nav>
+
+  <main class="citizen-layout">
+    <div class="map-container">
+      <div id="public-map"></div>
+
+      <aside class="map-overlay-panel">
+        <h3>Public Road Hazards (<span id="map-pothole-count">0</span>)</h3>
+        
+        <div class="filter-group">
+          <label class="filter-checkbox">
+            <input type="checkbox" id="filter-pending" class="map-filter-toggle" checked>
+            <span>Show Pending Hazards</span>
+          </label>
+          <label class="filter-checkbox">
+            <input type="checkbox" id="filter-rectified" class="map-filter-toggle" checked>
+            <span>Show Rectified / Fixed</span>
+          </label>
+          <label class="filter-checkbox">
+            <input type="checkbox" id="filter-critical" class="map-filter-toggle">
+            <span style="color:#dc2626; font-weight:700;">Critical Hazards Only</span>
+          </label>
+          <label class="filter-checkbox">
+            <input type="checkbox" id="filter-overdue" class="map-filter-toggle">
+            <span style="color:#991b1b; font-weight:800;">🚨 90+ Days Overdue Only</span>
+          </label>
+        </div>
+
+        <div class="map-legend">
+          <div style="font-weight:700; margin-bottom:4px;">Map Legend:</div>
+          <div class="legend-item"><span class="legend-color" style="background:#dc2626;"></span> Critical Hazard</div>
+          <div class="legend-item"><span class="legend-color" style="background:#ea580c;"></span> High Severity</div>
+          <div class="legend-item"><span class="legend-color" style="background:#f59e0b;"></span> Medium Severity</div>
+          <div class="legend-item"><span class="legend-color" style="background:#3b82f6;"></span> Low Severity</div>
+          <div class="legend-item"><span class="legend-color" style="background:#16a34a;"></span> ✅ Rectified / Fixed</div>
+          <div class="legend-item"><span class="badge-overdue" style="font-size:8px; padding:1px 4px;">90+ DAYS</span> Unresolved SLA Breach</div>
+        </div>
+      </aside>
+
+      <a href="report.html" class="btn btn-primary btn-float-report">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        Report a Pothole
+      </a>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>

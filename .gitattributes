@@ -1,0 +1,5 @@
+# Ensure GitHub classifies this repository strictly as Python and HTML
+*.js linguist-detectable=false
+*.js linguist-vendored=true
+frontend/js/* linguist-detectable=false
+frontend/js/* linguist-vendored=true

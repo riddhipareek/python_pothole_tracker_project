@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FixMyRoad — Citizen Road Hazard & Pothole Reporting</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231e3a8a'><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z'/></svg>">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="#1e3a8a">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+      FixMyRoad
+    </a>
+    <div class="nav-links">
+      <a href="citizen.html" class="nav-link">Public Map</a>
+      <a href="report.html" class="nav-link">Report Hazard</a>
+      <a href="admin-login.html" class="btn btn-secondary" style="padding:0.4rem 0.9rem; font-size:0.85rem;">Officer Portal</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-pill">
+      ⚠️ 9,438 Lives Lost to Potholes (2020–2024) in India
+    </div>
+    <h1>Empowering Citizens.<br>Enforcing Road Accountability.</h1>
+    <p>
+      FixMyRoad is a transparent, no-login public road hazard reporting and municipal SLA monitoring platform. Report potholes in seconds using browser GPS and track municipal repairs in real-time.
+    </p>
+
+    <div class="hero-actions">
+      <a href="citizen.html" class="btn btn-primary btn-lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        Continue as Citizen (No Login)
+      </a>
+      <a href="admin-login.html" class="btn btn-secondary btn-lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        Login as Municipal Admin
+      </a>
+    </div>
+  </header>
+
+  <section class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number" id="stat-total">--</div>
+      <div class="stat-label">Total Hazards Logged</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="stat-pending" style="color:#d97706;">--</div>
+      <div class="stat-label">Awaiting Municipal Action</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="stat-overdue" style="color:#dc2626;">--</div>
+      <div class="stat-label">🚨 90+ Days Unresolved</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="stat-rectified" style="color:#16a34a;">--</div>
+      <div class="stat-label">Successfully Rectified</div>
+    </div>
+  </section>
+
+  <section class="problem-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Why FixMyRoad Matters</h2>
+        <p>Bridging the gap between silent road hazards and municipal governance.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <div style="font-size:1.75rem; margin-bottom:0.5rem;">📍</div>
+          <h3>Zero-Friction Reporting</h3>
+          <p>Citizens can report road hazards instantly without registering or logging in. Automatic GPS geolocation records coordinates in one click.</p>
+        </div>
+
+        <div class="feature-box">
+          <div style="font-size:1.75rem; margin-bottom:0.5rem;">⏱️</div>
+          <h3>90-Day SLA Enforcement</h3>
+          <p>Unresolved potholes that exceed 90 days are automatically flagged on public maps and dashboards, preventing bureaucratic delays from going unnoticed.</p>
+        </div>
+
+        <div class="feature-box">
+          <div style="font-size:1.75rem; margin-bottom:0.5rem;">🤖</div>
+          <h3>AI Hazard Intelligence</h3>
+          <p>Automated visual severity estimation and geo-spatial duplicate detection streamline inspection workflows for municipal engineering teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>FixMyRoad — Built for DevJams '26 Hackathon | Public Road Safety & Governance Platform</p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
