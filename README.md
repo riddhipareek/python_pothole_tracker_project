@@ -13,7 +13,6 @@
   - RESTful API endpoints for citizen reporting and municipal workflow.
   - In-memory data store with dynamic 90-day SLA overdue engine.
   - Haversine geo-spatial distance calculation for 50m proximity deduplication.
-  - AI image visual severity scoring service.
 * **Frontend**: **HTML5 / CSS3**
   - Frictionless citizen experience (no login required) with 1-click GPS capture.
   - Interactive OpenStreetMap/Leaflet road hazard map.
@@ -31,7 +30,7 @@ Between 2020–2024, **9,438 lives were lost to pothole-related accidents in Ind
 1. **Citizen Experience (No Login Required)**: Open the web app, capture GPS coordinates in one click, select severity, upload photo evidence, and instantly view the hazard on a public map.
 2. **Municipal Governance Portal**: Authenticated admin dashboard with 5 real-time KPI metrics, search/filters, split map view, and a 1-click **"Mark as Rectified"** workflow that updates public records.
 3. **🚨 90+ Day SLA Enforcement**: Reports unaddressed for $\ge 90$ days are automatically flagged on both citizen maps and municipal dashboards to hold authorities accountable.
-4. **🤖 AI Hazard Intelligence**: Automatic visual severity scoring and 50-meter Haversine geo-duplicate detection prevent duplicate spam and prioritize critical road craters.
+4. **📍 Nearby Duplicate Alerts**: A 50-meter Haversine distance check warns citizens when a pothole has already been reported nearby.
 
 ---
 

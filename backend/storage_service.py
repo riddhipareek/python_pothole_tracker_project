@@ -108,8 +108,7 @@ def create_report(report_data: Dict[str, Any]) -> Dict[str, Any]:
         'updatedAt': now_iso,
         'rectifiedAt': None,
         'rectifiedBy': None,
-        'adminRemarks': '',
-        'aiMetadata': report_data.get('aiMetadata') or None
+        'adminRemarks': ''
     }
     
     in_memory_reports.insert(0, new_report)
