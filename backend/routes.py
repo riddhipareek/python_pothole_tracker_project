@@ -14,7 +14,7 @@ from .storage_service import (
     get_stats as db_get_stats,
     reset_demo_data
 )
-from .ai_service import analyze_pothole_image, check_nearby_duplicates
+from .geo_service import check_nearby_duplicates
 
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -167,15 +167,8 @@ def get_stats():
     stats = db_get_stats()
     return jsonify({'success': True, 'data': stats})
 
-# AI Endpoints
-@api_bp.route('/ai/analyze', methods=['POST'])
-def analyze_severity():
-    data = request.get_json(silent=True) or {}
-    image_base64 = data.get('imageBase64', '')
-    res = analyze_pothole_image(image_base64)
-    return jsonify({'success': True, 'data': res})
-
-@api_bp.route('/ai/check-duplicate', methods=['POST'])
+# Duplicate Check (distance-based)
+@api_bp.route('/check-duplicate', methods=['POST'])
 def check_duplicate():
     data = request.get_json(silent=True) or {}
     lat = data.get('latitude')

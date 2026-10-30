@@ -1,39 +1,35 @@
-# FixMyRoad — Local Setup & Development Guide
-Follow these simple, beginner-friendly steps to run **FixMyRoad** on your local machine using VS Code.
----
+# FixMyRoad — Local Setup Guide (Python)
+
 ## 1. Prerequisites
-Ensure you have the following installed:
-* **Node.js (v18 or higher)**: https://nodejs.org/
-* **VS Code**: https://code.visualstudio.com/
-* **Git**: https://git-scm.com/
----
-## 2. Step-by-Step Installation
-### Step A: Open the Project in VS Code
-1. Open VS Code.
-2. Click **File** > **Open Folder...**
-3. Select the `FixMyRoad` folder.
-### Step B: Open the Terminal in VS Code
-Press `Ctrl + ` ` (Backtick) to open the terminal.
-### Step C: Install Dependencies
+* **Python 3.10 or higher** — check with `python --version`
+* **Git**
+* **VS Code** (optional)
+
+## 2. Install
 ```bash
-npm install
-3. Starting the Application
-In your VS Code terminal, run:
+git clone https://github.com/riddhipareek/python_pothole_tracker_project.git
+cd python_pothole_tracker_project
+pip install -r requirements.txt
+```
 
-bash
+## 3. Run
+```bash
+python app.py
+```
+You're done when the terminal prints "FixMyRoad Python Server is actively running!".
 
+## 4. Open in browser
+* Landing page: http://localhost:5000
+* Public map: http://localhost:5000/citizen.html
+* Report form: http://localhost:5000/report.html
+* Officer login: http://localhost:5000/admin-login.html
 
-npm start
-4. Opening in Browser
-Citizen Landing Page: http://localhost:5000
-Public Interactive Map: http://localhost:5000/citizen.html
-Pothole Report Form: http://localhost:5000/report.html
-Officer Login: http://localhost:5000/admin-login.html
-Admin Dashboard: http://localhost:5000/admin-dashboard.html
-5. Demo Admin Credentials
-User ID / Email: admin@fixmyroad.gov.in (or admin)
-Password: Admin@12345
+## 5. Demo admin login
+* User ID: `admin@fixmyroad.gov.in` (or `admin`)
+* Password: `Admin@12345`
 
-
----
-### `
+## 6. Run the tests
+```bash
+python tests/test_backend.py
+```
+You're done when it prints "12/12 tests passed successfully."

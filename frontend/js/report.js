@@ -85,7 +85,7 @@ function requestCurrentLocation() {
 
 async function checkNearbyDuplicates(lat, lng) {
   try {
-    const res = await fetch(`${CONFIG.API_BASE_URL}/api/ai/check-duplicate`, {
+    const res = await fetch(`${CONFIG.API_BASE_URL}/api/check-duplicate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ latitude: lat, longitude: lng })
@@ -123,36 +123,8 @@ function handlePhotoUpload(event) {
       previewWrapper.style.display = 'block';
     }
 
-    analyzeImageWithAI(uploadedImageBase64);
   };
   reader.readAsDataURL(file);
-}
-
-async function analyzeImageWithAI(base64Data) {
-  const aiBox = document.getElementById('ai-recommendation');
-  if (!aiBox) return;
-
-  aiBox.style.display = 'flex';
-  aiBox.innerHTML = '<span>🤖 AI is analyzing pothole photo...</span>';
-
-  try {
-    const res = await fetch(`${CONFIG.API_BASE_URL}/api/ai/analyze`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ imageBase64: base64Data })
-    });
-    const data = await res.json();
-
-    if (data.success) {
-      const rec = data.data;
-      aiBox.innerHTML = `
-        <span>🤖 <strong>AI Estimation:</strong> ${rec.recommendation} (Confidence: ${Math.round(rec.confidenceScore * 100)}%)</span>
-      `;
-      selectSeverityCard(rec.detectedSeverity);
-    }
-  } catch (e) {
-    aiBox.innerHTML = '<span>🤖 AI suggestion unavailable (manual selection active).</span>';
-  }
 }
 
 function selectSeverityCard(severity) {
